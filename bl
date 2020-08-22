@@ -55,7 +55,7 @@ loopthroughblacklists() {
 
 
   while IFS='' read -r bl || [ -n "${bl}" ]; do
-      printf $(env tz=utc date "+%y-%m-%d_%h:%m:%s_%z")
+      printf $(env tz=utc date "+%y-%m-%d_%H:%M:%S_%z")
       printf "%-40s" " ${reverse}.${bl}."
 
       listed="$(dig +short -t a ${reverse}.${bl}.)"
