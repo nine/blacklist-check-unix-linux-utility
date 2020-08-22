@@ -10,6 +10,7 @@
 
 
 BL_LIST="$(dirname "$0")/bl.list"
+HOST_LISTED=false
 
 
 main() {
@@ -32,6 +33,8 @@ main() {
   fi
 
   loopthroughblacklists $1
+  $HOST_LISTED && exit 3
+  exit 0
 }
 
 reverseit() {
@@ -66,6 +69,7 @@ loopthroughblacklists() {
 
           echo "[timed out]" | cecho YELLOW 
         else
+          HOST_LISTED=true
         
           echo "[blacklisted] (${listed})" | cecho LRED
         fi
