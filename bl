@@ -8,7 +8,7 @@
 # description: I was just a bit tired of web interfaces            #
 ####################################################################
 
-#### main ####
+
 main() {
 
   [ $# -ne 1 ] && error "Please specify a FQDN or IP as a parameter."
@@ -31,7 +31,6 @@ main() {
   loopthroughblacklists $1
 }
 
-#### reverseit ####
 reverseit() {
 
   reverse=$(echo $1 |
@@ -44,7 +43,7 @@ reverseit() {
   fi
 }
 
-#### loopthroughblacklists ####
+
 loopthroughblacklists() {
 
   reverse_dns=$(dig +short -x $1)
@@ -74,14 +73,13 @@ loopthroughblacklists() {
   done
 }
 
-#### error ####
 error() {
 
   echo $0 error: $1 >&2
   exit 2
 }
 
-#### cecho ####
+
 cecho(){
   LGREEN="\033[1;32m"
   LRED="\033[1;31m"
@@ -215,5 +213,5 @@ z.mailspike.net
 zombie.dnsbl.sorbs.net
 "
 
-### initiate script ###
+
 main $1
